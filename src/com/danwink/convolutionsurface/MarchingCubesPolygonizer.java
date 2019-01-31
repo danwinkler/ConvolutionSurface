@@ -3,18 +3,25 @@ import java.util.ArrayList;
 
 import com.danwink.convolutionsurface.primitive.Triangle;
 
+
+/**
+ * Adapted from http://paulbourke.net/geometry/polygonise/
+ * 
+ * @author Daniel
+ *
+ */
 public class MarchingCubesPolygonizer
 {
 	public ArrayList<Triangle> polygonize( Field f, float isoLevel )
 	{
 		ArrayList<Triangle> triangles = new ArrayList<Triangle>();
 		GridCell g = new GridCell();
-		for( int x = 0; x < f.xSize-1; x ++ )
-		{ 
-			for( int y = 0; y < f.ySize-1; y ++ )
+		for( int z = 0; z < f.zSize-1; z++ )
+		{
+			for( int y = 0; y < f.ySize-1; y++ )
 			{
-				for( int z = 0; z < f.zSize-1; z ++ )
-				{
+				for( int x = 0; x < f.xSize-1; x++ )
+				{ 
 					float x0 = ( x ) * f.res + f.min.x;
 					float x1 = ( x+1 ) * f.res + f.min.x;
 					float y0 = ( y ) * f.res + f.min.y;
@@ -29,14 +36,14 @@ public class MarchingCubesPolygonizer
 					g.p[5].set( x1, y0, z1 );
 					g.p[6].set( x1, y1, z1 );
 					g.p[7].set( x0, y1, z1 );
-					g.val[0] = f.field[x+0][y+0][z+0];
-					g.val[1] = f.field[x+1][y+0][z+0];
-					g.val[2] = f.field[x+1][y+1][z+0];
-					g.val[3] = f.field[x+0][y+1][z+0];
-					g.val[4] = f.field[x+0][y+0][z+1];
-					g.val[5] = f.field[x+1][y+0][z+1];
-					g.val[6] = f.field[x+1][y+1][z+1];
-					g.val[7] = f.field[x+0][y+1][z+1];
+					g.val[0] = f.field[z+0][y+0][x+0];
+					g.val[1] = f.field[z+0][y+0][x+1];
+					g.val[2] = f.field[z+0][y+1][x+1];
+					g.val[3] = f.field[z+0][y+1][x+0];
+					g.val[4] = f.field[z+1][y+0][x+0];
+					g.val[5] = f.field[z+1][y+0][x+1];
+					g.val[6] = f.field[z+1][y+1][x+1];
+					g.val[7] = f.field[z+1][y+1][x+0];
 					
 					polygonise( g, isoLevel, triangles );
 				}

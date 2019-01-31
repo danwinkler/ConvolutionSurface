@@ -22,4 +22,16 @@ public class Triangle implements Primitive
 	{
 		throw new UnsupportedOperationException( "Not yet implemented." );
 	}
+
+	public Vector getMin()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Vector getMax()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

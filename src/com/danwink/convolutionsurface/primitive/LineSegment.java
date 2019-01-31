@@ -15,6 +15,13 @@ public class LineSegment implements Primitive
 		this.p0 = p0;
 		this.p1 = p1;
 		
+		this.s = s;
+		
+		updateCachedValues();
+	}
+	
+	public void updateCachedValues()
+	{
 		v = new Vector();
 		v.sub( p1, p0 );
 		
@@ -24,8 +31,51 @@ public class LineSegment implements Primitive
 		vn = new Vector( v );
 		vn.scale( 1.f / l );
 		
-		this.s = s;
 		this.s2 = s*s;
+	}
+	
+	public void normalize()
+	{
+		this.p1.set( p0 );
+		this.p1.add( vn );
+		updateCachedValues();
+	}
+	
+	public Vector getVector()
+	{
+		return v;
+	}
+	
+	public Vector getP0()
+	{
+		return p0;
+	}
+	
+	public Vector getP1()
+	{
+		return p1;
+	}
+	
+	public void setP0( Vector v )
+	{
+		this.p0 = v;
+		this.updateCachedValues();
+	}
+	
+	public void setP1( Vector v )
+	{
+		this.p1 = v;
+		this.updateCachedValues();
+	}
+	
+	public Vector getMin()
+	{
+		return new Vector( Math.min( p0.x, p1.x ), Math.min( p0.y, p1.y ), Math.min( p0.z, p1.z ) );
+	}
+	
+	public Vector getMax()
+	{
+		return new Vector( Math.max( p0.x, p1.x ), Math.max( p0.y, p1.y ), Math.max( p0.z, p1.z ) );
 	}
 	
 	public float compute( Vector p )

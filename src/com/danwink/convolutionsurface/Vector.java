@@ -22,7 +22,14 @@ public class Vector
 		this.y = y;
 		this.z = z;
 	}
-
+	
+	public void add( Vector v )
+	{
+		x += v.x;
+		y += v.y;
+		z += v.z;
+	}
+	
 	public void sub( Vector v )
 	{
 		x -= v.x;
@@ -42,6 +49,15 @@ public class Vector
 		x = v.x;
 		y = v.y;
 		z = v.z;
+	}
+	
+	public Vector cross( Vector v )
+	{
+		Vector r = new Vector();
+		r.x = y*v.z - z*v.y;
+		r.y = z*v.x - x*v.z;
+		r.z = x*v.y - y*v.x;			
+		return r;
 	}
 	
 	public void set( float x, float y, float z )
@@ -71,5 +87,16 @@ public class Vector
 		x = a.x - b.x;
 		y = a.y - b.y;
 		z = a.z - b.z;
+	}
+	
+	public void normalize()
+	{
+		scale( 1.f / length() );
+	}
+	
+	@Override
+	public String toString()
+	{
+		return String.format( "(%f, %f, %f)", x, y, z );
 	}
 }
