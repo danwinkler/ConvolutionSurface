@@ -17,6 +17,19 @@ public class Triangle implements Primitive
 		this.b = b;
 		this.c = c;
 	}
+	
+	public Vector getNormal()
+	{
+		Vector d1 = new Vector( b );
+		d1.sub( a );
+		d1.normalize();
+		
+		Vector d2 = new Vector( c );
+		d1.sub( a );
+		d2.normalize();
+		
+		return d1.cross( d2 );
+	}
 
 	public float compute( Vector v )
 	{
