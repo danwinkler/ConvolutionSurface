@@ -1,10 +1,10 @@
 package com.danwink.convolutionsurface;
 public class Field
 {
-	Vector min, max;
-	float res;
-	Float[][][] field;
-	int xSize, ySize, zSize;
+	public Vector min, max;
+	public float res;
+	public Float[][][] field;
+	public int xSize, ySize, zSize;
 	
 	public Field( Vector min, Vector max, float res )
 	{
