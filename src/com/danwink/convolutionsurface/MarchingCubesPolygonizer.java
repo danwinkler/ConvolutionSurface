@@ -419,9 +419,9 @@ public class MarchingCubesPolygonizer
 		for( int i = 0; triTable[cubeindex][i] != -1; i+=3 )
 		{
 			Triangle t = new Triangle();
-			t.a = vertlist[triTable[cubeindex][i  ]];
-			t.b = vertlist[triTable[cubeindex][i+1]];
-			t.c = vertlist[triTable[cubeindex][i+2]];
+			t.p0 = vertlist[triTable[cubeindex][i  ]];
+			t.p1 = vertlist[triTable[cubeindex][i+1]];
+			t.p2 = vertlist[triTable[cubeindex][i+2]];
 			
 			triangles.add( t );
 		}

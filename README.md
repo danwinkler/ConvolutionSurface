@@ -1,6 +1,6 @@
 # ConvolutionSurface
 Java Implementation of convolution primitives from "Creating and Rendering Convolution Surfaces" (1997), 
-by Jon McCormack and Andrei Sheerstyuk. Currently only the only primitive supported are line segments.
+by Jon McCormack and Andrei Sheerstyuk. Currently only the only primitives supported are line segments and triangles.
 
 Includes functions for:
 * Generating scalar fields from list of primitives
